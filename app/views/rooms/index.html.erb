@@ -1,9 +1,5 @@
 <div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
-<%
-=begin%>
- <div id="user-id" data-user-id="<%= current_user.id %>"></div> 
-<%
-=end%>
+<div id="user-id" data-user-id="<%= current_user.id %>"></div>
 
 <div class="container-fluid">
   <div class="row">
@@ -11,11 +7,7 @@
       <div class="card no-outline">
         <div class="card-body">
           <small>Logged in as</small><br>
-          <%
-=begin%>
- <b><%= current_user.username %><br></b> 
-<%
-=end%>
+          <b><%= current_user.username %><br></b>
         </div>
       </div>
       <hr>
@@ -28,11 +20,7 @@
             <div class="card-body">
               <span class='name'><%= room.name %></span><br>
               <span class='member-count'>
-                <%
-=begin%>
- <small><%= room.users.uniq.count %> Members</small> 
-<%
-=end%>
+                <small><%= room.users.uniq.count %> Members</small>
               </span>
             </div>
           </div>
@@ -46,15 +34,14 @@
             <span class="navbar-brand" href="#">
               <b><%= @room.name %></b>
             </span>
-            <%
-=begin%>
- <small><%= @room.users.uniq.count %> Members</small> 
-<%
-=end%>
+            <small><%= @room.users.uniq.count %> Members</small>
           </nav>
           <div id="messages">
             <% @room.messages.each do |message| %>
-              <%= render 'messages/message', message: message %>
+              <p>
+                <%= message.content %> -
+                <%= message.user.username %>>
+              </p>
             <% end %>
           </div>
           <div class="chat-box">
