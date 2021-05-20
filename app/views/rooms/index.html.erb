@@ -38,10 +38,7 @@
           </nav>
           <div id="messages">
             <% @room.messages.each do |message| %>
-              <p>
-                <%= message.content %> -
-                <%= message.user.username %>>
-              </p>
+              <%= render 'messages/message', message: message %>
             <% end %>
           </div>
           <div class="chat-box">
